@@ -70,7 +70,7 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./static/portfolio/Frame2.png');"></div>
+                <div class="fill" style="background-image:url('./static/portfolio/art.jpg');"></div>
                 <div class="carousel-caption">
                     <h2 class="animated fadeInLeft">Chyngyz Baybosunov</h2>
                     <p class="animated fadeInUp">Python web developer</p>
@@ -79,7 +79,7 @@
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./static/portfolio/Frame2.png');"></div>
+                <div class="fill" style="background-image:url('./static/portfolio/art.jpg');"></div>
                 <div class="carousel-caption">
                     <h2 class="animated fadeInDown">Chyngyz Baybosunov</h2>
                     <p class="animated fadeInUp">python web developer</p>
@@ -88,7 +88,7 @@
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./static/portfolio/Frame2.png');"></div>
+                <div class="fill" style="background-image:url('./static/portfolio/art.jpg');"></div>
                 <div class="carousel-caption">
                     <h2 class="animated fadeInRight">Chyngyz Baybosunov</h2>
                     <p class="animated fadeInRight">python web developer</p>
@@ -108,24 +108,26 @@
     </div>
 
     <!-- blog chyngyz -->
-    <h2 class="mt-5">Portfolio</h2>
-    <hr>
-    <div class="row">
-        {% for project in projects %}
-        <div class="col-lg-4 col-md-6">
+    <div class="container text-center">
+        <h2 class="mt-5">Portfolio</h2>
+        <hr>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6">
 
-            {% if project.url %}
-            <a href="{{ project.url }}">
-                <img src="{{ project.image.url }}" class="img-fluid mb-2">
-            </a>
-            {% else %}
+                {% if project.url %}
+                <a href="{{ project.url }}">
+                    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+                </a>
+                {% else %}
 
-            <img src="{{ project.image.url }}" class="img-fluid mb-2"> {% endif %}
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.text }}</p>
-            <a href="{{ project.url }}" class="btn btn-primary">GitHub</a>
+                <img src="{{ project.image.url }}" class="img-fluid mb-2"> {% endif %}
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.text }}</p>
+                <a href="{{ project.url }}" class="btn btn-primary">GitHub</a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
 

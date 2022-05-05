@@ -1,0 +1,50 @@
+{% extends "portfolio/base.html" %} {%block content%}
+
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">
+      Home 
+      <span class="sr-only">
+        (Главное)
+      </span>
+  </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'blog:all_blogs' %}">
+      Blog
+      <span class="sr-only">
+        (Блог)
+      </span>
+    </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{%static 'portfolio/resume.pdf' %}">
+      Resume
+      <span class="sr-only">
+        (Резюме)
+      </span>
+  </a>
+    </li>
+</ul>
+<div>
+    <h2 class="mt-5">Portfolio</h2>
+    <hr>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-lg-4 col-md-6">
+
+            {% if project.url %}
+            <a href="{{ project.url }}">
+                <img src="{{ project.image.url }}" class="img-fluid mb-2">
+            </a>
+            {% else %}
+
+            <img src="{{ project.image.url }}" class="img-fluid mb-2"> {% endif %}
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.text }}</p>
+            <a href="{{ project.url }}" class="btn btn-primary">GitHub</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

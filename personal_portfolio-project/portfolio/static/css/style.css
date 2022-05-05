@@ -104,3 +104,7 @@ p {
     -webkit-animation-name: fadeInRight;
     animation-name: fadeInRight;
 }
+
+.fill {
+    width: 100%;
+}

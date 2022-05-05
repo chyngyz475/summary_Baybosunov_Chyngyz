@@ -9,5 +9,6 @@ class Project(models.Model):
     text = models.CharField(max_length=2000)
     url = models.URLField(blank=True)
     
+    
     def __str__(self):
         return self.title
