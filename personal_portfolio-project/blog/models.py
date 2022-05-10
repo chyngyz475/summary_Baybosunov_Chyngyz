@@ -7,7 +7,8 @@ class Blog(models.Model):
     image = models.ImageField(upload_to='portfolio/images/', height_field=None , width_field=None)
     title = models.CharField(max_length=100)
     date  = models.DateField()
-    text = models.TextField(max_length=150)
+    description = models.CharField(max_length=500)
+    text = models.TextField(max_length=150000)
     
     def __str__(self):
         return self.title
