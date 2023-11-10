@@ -1,40 +1,27 @@
-{% extends "portfolio/base.html" %} {%block content%}
+{% extends "portfolio/base.html" %}
 
-<div class="container text-center" style="
-        display: grid;
-        width: 100%;
-        max-width: 840px;
-        margin: 0 auto;
-        margin-bottom: 50px;
-        grid-auto-flow: row;
-        gap: 30px;">
-    <article style="
-        width: 100%;
-        margin: 0 auto;
-        padding-top: 18px;
-        padding-right: 38px;
-        padding-bottom: 18px;
-        padding-left: 38px;
-        position: relative;
-        color: var(--tp-primary-color-text);
-        outline: 1px solid var(--tp-primary-border-color);
-        border-radius: 12px;
-        background-color: var(--tp-secondary-background-color);
-        fill: var(--tp-primary-color-text);">
-        <h2>{{ blogs.count }} blog {{ blogs.count|pluralize }}</h2>
-        {% for blog in blogs %} {% if project.url %}
-        <a href="{{ blog.url }}">
-            <img src="{{ blog.image.url }}" class="img-fluid mb-2">
-        </a>
-        {% else %}
-        <a href="{% url 'blog:detail' blog.id %}">
-            <h2>{{blog.title}}</h2>
-        </a>
-        <img src="{{ blog.image.url }}" class="img-fluid mb-2"> {% endif %}
-        <h5>{{blog.date|date:'M d Y'}}</h5>
-        <h6>{{blog.description}}</h6>
-        <p>{{blog.text|striptags|truncatechars:100}} </p>
-    </article>
+{% block content %}
+<div class="container">
+    <h2>{{ blogs.count }} blog {{ blogs.count|pluralize }}</h2>
+
+    <div class="blog-container row">
+        {% for blog in blogs %}
+            <div class="col-md-4 mb-4">
+                <div class="blog-item">
+                    <div class="blog-header">
+                        <span class="blog-author">{{ blog.author }}</span>
+                        <span class="blog-date">{{ blog.date|date:'M d Y' }}</span>
+                    </div>
+                    <a href="{% url 'blog:detail' blog.id %}">
+                        <img src="{{ blog.image.url }}" class="img-fluid mb-2" alt="{{ blog.title }}">
+                    </a>
+                    <a href="{% url 'blog:detail' blog.id %}" class="blog-title">
+                        <h2>{{ blog.title }}</h2>
+                    </a>
+                    <p class="blog-description">{{ blog.text|striptags|truncatechars:100 }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
-
-{% endfor %} {% endblock %}
+{% endblock %}

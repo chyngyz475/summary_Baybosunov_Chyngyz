@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Blog(models.Model):
+    author = models.CharField(max_length=100)
     image = models.ImageField(upload_to='portfolio/images/', height_field=None , width_field=None)
     title = models.CharField(max_length=100)
     date  = models.DateField()
@@ -12,3 +13,4 @@ class Blog(models.Model):
     
     def __str__(self):
         return self.title
+
